@@ -68,18 +68,18 @@ pipeline {
             }
         }
 
-        // stage('Terraform Apply') {
-        //     steps {
-        //         script {
-        //             timeout(time: 15, unit: 'MINUTES') {
-        //                 input message: 'Apply this plan?', ok: 'Apply'
-        //             }
-        //         }
-        //         dir('terraform/infrastructure') {
-        //             sh 'terraform apply -auto-approve tfplan'
-        //         }
-        //     }
-        // }
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    timeout(time: 15, unit: 'MINUTES') {
+                        input message: 'Apply this plan?', ok: 'Apply'
+                    }
+                }
+                dir('terraform/infrastructure') {
+                    sh 'terraform apply -auto-approve tfplan'
+                }
+            }
+        }
     }
 
     post {
